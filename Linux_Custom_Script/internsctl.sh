@@ -9,14 +9,16 @@ get_memory_info() {
 }
 
 create_user() {
-  if [ -z "$2" ]; then
-    echo "Usage: $0 user create <username>"
+  read -p "Enter the username for the new user: " username
+
+  if [ -z "$username" ]; then
+    echo "Username cannot be empty."
     exit 1
   fi
 
-  sudo useradd -m "$2"
-  sudo passwd "$2"
-  echo "User '$2' created successfully."
+  sudo useradd -m "$username"
+  sudo passwd "$username"
+  echo "User '$username' created successfully."
 }
 
 list_users() {
@@ -35,7 +37,6 @@ get_sudo_users() {
   grep -Po '^sudo.+:\K.*$' /etc/group | tr ',' '\n'
 }
 
-# Main script logic
 case "$1" in
   cpu)
     case "$2" in
@@ -64,7 +65,7 @@ case "$1" in
   user)
     case "$2" in
       create)
-        create_user "$@"
+        create_user
         ;;
       list)
         list_users "$@"
