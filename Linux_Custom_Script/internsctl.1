@@ -1,0 +1,45 @@
+.TH INTERNSCTL 1 "January 2024" "1.0" "internsctl man page"
+.SH NAME
+internsctl \- manage system information and users
+.SH SYNOPSIS
+.B internsctl
+[\fIcommand\fR] [\fIsubcommand\fR] [\fIoptions\fR]
+.SH DESCRIPTION
+.B internsctl
+is a script that allows you to manage system information and users on a Linux system.
+.PP
+Available commands:
+.TP
+\fBcpu getinfo\fR
+Display CPU information using lscpu.
+.TP
+\fBmemory getinfo\fR
+Display memory information similar to the 'free' command.
+.TP
+\fBuser create\fR
+Interactively create a new user.
+.TP
+\fBuser list\fR [\-\-sudo-only]
+List all users or users with sudo permissions.
+.SH OPTIONS
+.TP
+\fB\-\-sudo\-only\fR
+List only users with sudo permissions.
+.SH EXAMPLES
+.B internsctl cpu getinfo
+.PP
+.B internsctl memory getinfo
+.PP
+.B internsctl user create
+.PP
+.B internsctl user list
+.PP
+.B internsctl user list \-\-sudo\-only
+.SH SEE ALSO
+.BR lscpu (1),
+.BR free (1),
+.BR useradd (8),
+.BR passwd (1),
+.BR sudo (8)
+.SH AUTHOR
+Written by Your Name.
